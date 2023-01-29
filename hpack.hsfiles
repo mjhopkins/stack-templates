@@ -68,18 +68,22 @@ tests:
       - -rtsopts
       - -with-rtsopts=-N4
 
+
 {-# START_FILE Setup.hs #-}
 import Distribution.Simple
 main = defaultMain
 
+
 {-# START_FILE src/Lib.hs #-}
 module Lib where
+
 
 {-# START_FILE app/Main.hs #-}
 module Main where
 
 main :: IO ()
 main = putStrLn "Hello world"
+
 
 {-# START_FILE test/Spec.hs #-}
 module Main (main) where
@@ -98,21 +102,25 @@ unitTests = []
 propertyTests :: [TestTree]
 propertyTests = []
 
+
 {-# START_FILE README.md #-}
 # {{name}}
+
 
 {-# START_FILE CHANGELOG.md #-}
 # Changelog for {{name}}
 
 All notable changes to this project will be documented in this file.
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+The format is based on
+[Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to the
 [Haskell Package Versioning Policy](https://pvp.haskell.org/).
 
 ## Unreleased
 
 ## 0.1.0.0 - YYYY-MM-DD
+
 
 {-# START_FILE LICENSE #-}
 Copyright {{author-name}}{{^author-name}}Author name here{{/author-name}} (c) {{year}}{{^year}}2022{{/year}}
@@ -150,3 +158,4 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 {-# START_FILE tools.sh #-}
 #!/usr/bin/env bash
 stack build hlint hoogle
+
