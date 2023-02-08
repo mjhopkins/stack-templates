@@ -200,6 +200,27 @@ export cabal=3.6.2.0
 
 export PATH="$PWD/.bin:$PATH"
 
-# Test if GHC is installed
-ghcup list --tool ghc --show-criteria installed --raw-format 2> /dev/null | cut -d ' ' -f 2 | grep -q $ghc || echo "Warning: GHC $ghc is not installed"
+RED='\033[0;31m'
+NC='\033[0m' # No Color
+
+# Check if selected versions of tools are installed
+declare -A tools
+tools+=(
+   [GHC]=$ghc
+   [HLS]=$hls
+   [Stack]=$stack
+   [Cabal]=$cabal
+ )
+for tool in ${!tools[@]}; do
+  version=${tools[$tool]}
+  ghcup list \
+    --tool $tool \
+    --show-criteria installed \
+    --raw-format \
+    2> /dev/null | \
+    cut -d ' ' -f 2 | \
+    grep -q $version || \
+    printf "${RED}Warning: The environment specifies $tool version $version, but it is not installed${NC}.\n"
+done
+
 
