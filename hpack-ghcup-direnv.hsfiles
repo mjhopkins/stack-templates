@@ -190,6 +190,18 @@ echo "$cmd"
 exec $cmd
 
 
+{-# START_FILE .bin/hlint #-}
+#!/usr/bin/env bash
+
+runstackexec hlint $@
+
+
+{-# START_FILE .bin/hoogle #-}
+#!/usr/bin/env bash
+
+runstackexec hoogle $@
+
+
 {-# START_FILE .envrc #-}
 #!/usr/bin/env bash
 
