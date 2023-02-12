@@ -185,7 +185,7 @@ exec $cmd
 
 set -u
 
-cmd="ghcup run --ghc $ghc --cabal $cabal --hls $hls --stack $stack --cabal $cabal -- stack exec --system-ghc -- $@"
+cmd="ghcup run --ghc $ghc --hls $hls --stack $stack --cabal $cabal -- stack exec --system-ghc -- $@"
 echo "$cmd"
 exec $cmd
 
