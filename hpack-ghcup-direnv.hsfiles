@@ -165,7 +165,7 @@ stack build hlint hoogle
 
 set -u
 
-cmd="ghcup run --ghc $ghc --hls $hls --stack $stack --cabal $cabal -- $@"
+cmd="ghcup run --quick --ghc $ghc --hls $hls --stack $stack --cabal $cabal -- $@"
 echo "$cmd"
 exec $cmd
 
@@ -175,7 +175,7 @@ exec $cmd
 
 set -u
 
-cmd="ghcup run --ghc $ghc --hls $hls --stack $stack --cabal $cabal -- stack --system-ghc $@"
+cmd="ghcup run --quick --ghc $ghc --hls $hls --stack $stack --cabal $cabal -- stack --system-ghc $@"
 echo "$cmd"
 exec $cmd
 
@@ -185,7 +185,7 @@ exec $cmd
 
 set -u
 
-cmd="ghcup run --ghc $ghc --hls $hls --stack $stack --cabal $cabal -- stack exec --system-ghc -- $@"
+cmd="ghcup run --quick --ghc $ghc --hls $hls --stack $stack --cabal $cabal -- stack exec --system-ghc -- $@"
 echo "$cmd"
 exec $cmd
 
