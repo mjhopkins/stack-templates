@@ -210,8 +210,6 @@ export hls=1.9.0.0
 export stack=2.9.3
 export cabal=3.6.2.0
 
-export PATH="$PWD/.bin:$PATH"
-
 RED='\033[0;31m'
 NC='\033[0m' # No Color
 
@@ -235,4 +233,7 @@ for tool in ${!tools[@]}; do
     printf "${RED}Warning: The environment specifies $tool version $version, but it is not installed${NC}.\n"
 done
 
+CTB=$($PWD/.bin/runstack path --compiler-tools-bin 2>/dev/null)
+export PATH="$CTB:$PATH"
+export PATH="$PWD/.bin:$PATH"
 
