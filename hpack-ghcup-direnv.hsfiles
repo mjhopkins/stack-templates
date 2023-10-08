@@ -160,6 +160,21 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 stack build hlint hoogle
 
 
+{-# START_FILE .ghci #-}
+:set prompt "λ> "
+:set prompt-cont " | "
+:set +m
+:set +t
+:set -XTypeApplications
+-- :set -XOverloadedStrings
+-- :set -XOverloadedLists
+-- import qualified Data.Set as Set
+-- import           Data.Set (Set)
+-- import qualified Data.List as L
+-- import qualified Data.Map as Map
+-- import           Data.Map (Map)
+
+
 {-# START_FILE .bin/run #-}
 #!/usr/bin/env bash
 
