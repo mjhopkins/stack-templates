@@ -157,12 +157,13 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 {-# START_FILE tools.sh #-}
 #!/usr/bin/env bash
-stack build hlint hoogle
+runstack build hlint hoogle pointfree --copy-compiler-tool
 
 
 {-# START_FILE .ghci #-}
 :set prompt "λ> "
 :set prompt-cont " | "
+:def pf \str -> return $ ":! pointfree \"" ++ str ++ "\""
 :set +m
 :set +t
 :set -XTypeApplications
