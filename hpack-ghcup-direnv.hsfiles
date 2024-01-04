@@ -157,12 +157,14 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 {-# START_FILE tools.sh #-}
 #!/usr/bin/env bash
-runstack build hlint hoogle pointfree --copy-compiler-tool
+stack build hlint hoogle pointfree --copy-compiler-tool
 
 
 {-# START_FILE .ghci #-}
 :set prompt "λ> "
 :set prompt-cont " | "
+:def hlint \s -> return $ ":! hlint \"" ++ s ++ "\""
+:def hoogle \s -> return $ ":! hoogle --count=15 \"" ++ s ++ "\""
 :def pf \str -> return $ ":! pointfree \"" ++ str ++ "\""
 :set +m
 :set +t
@@ -186,7 +188,7 @@ echo "$cmd"
 exec $cmd
 
 
-{-# START_FILE .bin/runstack #-}
+{-# START_FILE .bin/stack #-}
 #!/usr/bin/env bash
 
 set -u
@@ -221,9 +223,9 @@ runstackexec hoogle $@
 {-# START_FILE .envrc #-}
 #!/usr/bin/env bash
 
-export ghc=9.4.7
-export hls=2.4.0.0
-export stack=2.11.1
+export ghc=9.6.3
+export hls=2.5.0.0
+export stack=2.13.1
 export cabal=3.6.2.0
 
 RED='\033[0;31m'
