@@ -184,7 +184,7 @@ stack build hlint hoogle pointfree --copy-compiler-tool
 set -u
 
 cmd="ghcup run --quick --ghc $ghc --hls $hls --stack $stack --cabal $cabal -- $@"
-echo "$cmd"
+>&2 echo "$cmd"
 exec $cmd
 
 
@@ -194,7 +194,7 @@ exec $cmd
 set -u
 
 cmd="ghcup run --quick --ghc $ghc --hls $hls --stack $stack --cabal $cabal -- stack --system-ghc $@"
-echo "$cmd"
+>&2 echo "$cmd"
 exec $cmd
 
 
@@ -204,7 +204,7 @@ exec $cmd
 set -u
 
 cmd="ghcup run --quick --ghc $ghc --hls $hls --stack $stack --cabal $cabal -- stack exec --system-ghc -- $@"
-echo "$cmd"
+>&2 echo "$cmd"
 exec $cmd
 
 
@@ -251,7 +251,10 @@ for tool in ${!tools[@]}; do
     printf "${RED}Warning: The environment specifies $tool version $version, but it is not installed${NC}.\n"
 done
 
-CTB=$($PWD/.bin/runstack path --compiler-tools-bin 2>/dev/null)
+CTB="$($PWD/.bin/stack path --compiler-tools-bin 2>/dev/null)"
+BIN_PATH="$($PWD/.bin/stack path --local-install-root)/bin"
+
 export PATH="$CTB:$PATH"
+export PATH="$BIN_PATH:$PATH"
 export PATH="$PWD/.bin:$PATH"
 
