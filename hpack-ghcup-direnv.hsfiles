@@ -223,9 +223,9 @@ runstackexec hoogle $@
 {-# START_FILE .envrc #-}
 #!/usr/bin/env bash
 
-export ghc=9.6.4
-export hls=2.7.0.0
-export stack=2.15.5
+export ghc=9.6.6
+export hls=2.9.0.1
+export stack=3.1.1
 export cabal=3.10.3.0
 
 RED='\033[0;31m'
