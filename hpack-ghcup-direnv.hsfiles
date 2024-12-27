@@ -251,6 +251,8 @@ for tool in ${!tools[@]}; do
     printf "${RED}Warning: The environment specifies $tool version $version, but it is not installed${NC}.\n"
 done
 
+(cd .bin && chmod a+x *)
+
 CTB="$($PWD/.bin/stack path --compiler-tools-bin 2>/dev/null)"
 BIN_PATH="$($PWD/.bin/stack path --local-install-root)/bin"
 
