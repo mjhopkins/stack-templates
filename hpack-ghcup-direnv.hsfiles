@@ -252,6 +252,8 @@ for tool in ${!tools[@]}; do
 done
 
 (cd .bin && chmod a+x *)
+chmod go-w .
+chmod a+x tools.sh
 
 CTB="$($PWD/.bin/stack path --compiler-tools-bin 2>/dev/null)"
 BIN_PATH="$($PWD/.bin/stack path --local-install-root)/bin"
